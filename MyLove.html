@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franklin & Betty — One Year of Us 💜</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --purple: #6B3FA0;
+    --purple-light: #9B6DD0;
+    --purple-pale: #EDE0FF;
+    --rose: #C4607A;
+    --rose-light: #E8A0B0;
+    --rose-pale: #FDEEF2;
+    --cream: #FDF8F5;
+    --dark: #2A1A2E;
+    --gold: #C9A84C;
+  }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* Emoji Background */
+  .emoji-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .floating-emoji {
+    position: absolute;
+    font-size: 1.4rem;
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(160deg, #2A1A2E 0%, #4A1A35 50%, #2A1535 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(155, 109, 208, 0.18) 0%, transparent 70%);
+  }
+
+  .badge {
+    display: inline-block;
+    font-weight: 200;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rose-light);
+    border: 0.5px solid rgba(228, 160, 176, 0.4);
+    padding: 8px 24px;
+    border-radius: 40px;
+    margin-bottom: 32px;
+    animation: fadeIn 1s ease 0.3s both;
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    font-weight: 300;
+    color: var(--rose-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    animation: fadeIn 1s ease 0.4s both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    font-weight: 300;
+    color: #FDF8F5;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    animation: fadeIn 1s ease 0.6s both;
+  }
+
+  .hero-title em { font-style: italic; color: var(--rose-light); }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: rgba(253, 248, 245, 0.6);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+    animation: fadeIn 1s ease 0.9s both;
+  }
+
+  .emoji-row {
+    display: flex;
+    gap: 12px;
+    font-size: 1.8rem;
+    margin-top: 40px;
+    animation: fadeIn 1s ease 1.2s both;
+  }
+
+  .emoji-row span { animation: pulse 2s ease-in-out infinite; }
+  .emoji-row span:nth-child(2) { animation-delay: 0.3s; }
+  .emoji-row span:nth-child(3) { animation-delay: 0.6s; }
+  .emoji-row span:nth-child(4) { animation-delay: 0.9s; }
+  .emoji-row span:nth-child(5) { animation-delay: 1.2s; }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(253, 248, 245, 0.4);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease 2s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(196, 96, 122, 0.8), transparent);
+    animation: scrollAnim 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollAnim {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5); opacity: 0.4; }
+  }
+
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 20px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-weight: 200;
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--rose-light);
+    opacity: 0.4;
+    max-width: 80px;
+  }
+
+  /* SLIDESHOW STYLES */
+  .gallery {
+    background: var(--dark);
+    padding: 100px 20px;
+  }
+
+  .gallery-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .gallery-label {
+    font-weight: 200;
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--rose-light);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .gallery-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: rgba(228, 160, 176, 0.3);
+    max-width: 80px;
+  }
+
+  .slideshow-container {
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 4/5;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(196, 96, 122, 0.15);
+    background-color: #000;
+  }
+
+  /* Cinematic vignette overlay */
+.slideshow-container {
+  width: 100%;
+  max-width: 450px; 
+  aspect-ratio: 2/3; 
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  
+  /* UPDATE THIS LINE */
+  background-color: #1A0D1E; 
+  
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows the ENTIRE photo, no matter what */
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    transform: scale(1) !important; /* Forces the zoom to stay OFF */
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: scale(1) !important;
+  }
+
+  /* Love Letter Styles */
+  .love-letter {
+    background: white;
+    border-radius: 2px;
+    padding: clamp(40px, 8vw, 80px);
+    border: 0.5px solid rgba(196, 96, 122, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .love-letter::before {
+    content: '❝';
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 6rem;
+    color: var(--purple-pale);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+    opacity: 0.8;
+  }
+
+  .love-letter p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.65rem);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--dark);
+    position: relative;
+    z-index: 1;
+  }
+
+  .love-letter p + p { margin-top: 1.5em; }
+
+  .love-letter .salutation {
+    font-style: italic;
+    color: var(--rose);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-bottom: 1.5em;
+    display: block;
+  }
+
+  .love-letter .sign-off {
+    margin-top: 2em;
+    font-style: italic;
+    color: var(--purple);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    display: block;
+  }
+
+  /* Prayer Section */
+  .prayer-section {
+    background: linear-gradient(135deg, var(--purple-pale), var(--rose-pale));
+    padding: 80px 20px;
+  }
+
+  .prayer-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .prayer-icon {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    display: block;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  .prayer-label {
+    font-weight: 200;
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .prayer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--dark);
+  }
+
+  .scripture {
+    display: inline-block;
+    margin-top: 32px;
+    font-weight: 200;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--purple);
+    border-top: 0.5px solid rgba(107, 63, 160, 0.3);
+    padding-top: 16px;
+  }
+
+  /* Forever Section */
+  .forever-section {
+    background: var(--dark);
+    padding: 100px 20px;
+    text-align: center;
+  }
+
+  .forever-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .forever-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 300;
+    color: var(--rose-light);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+
+  .forever-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(253, 248, 245, 0.75);
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 48px auto;
+    max-width: 300px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 0.5px;
+    background: rgba(196, 96, 122, 0.4);
+  }
+
+  .divider-icon { font-size: 1.2rem; }
+
+  footer {
+    background: #1A0D1E;
+    padding: 48px 20px;
+    text-align: center;
+  }
+
+  .footer-emojis {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .footer-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--rose-light);
+    margin-bottom: 12px;
+  }
+
+  .footer-text {
+    font-weight: 200;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(253, 248, 245, 0.3);
+  }
+
+  @media (max-width: 600px) {
+    .slideshow-container { aspect-ratio: 3/4; }
+  }
+</style>
+</head>
+<body>
+
+<div class="emoji-bg" id="emojiBg"></div>
+
+<div class="hero">
+  <div class="badge">One Beautiful Year ✦ 2024 — 2025</div>
+  <p class="hero-names">Franklin &amp; Betty</p>
+  <h1 class="hero-title">You &amp; I,<br><em>Always.</em></h1>
+  <p class="hero-sub">A year of love, laughter, and every moment in between</p>
+  <div class="emoji-row">
+    <span>💜</span>
+    <span>🌹</span>
+    <span>✝️</span>
+    <span>🌹</span>
+    <span>💜</span>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</div>
+
+<div class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-label">Our moments</div>
+    
+    <div class="slideshow-container">
+      <img class="slide" src="Together-1.jpeg" alt="Together photo 1">
+      <img class="slide" src="Together-2.jpeg" alt="Together photo 2">
+      <img class="slide" src="Together-3.jpeg" alt="Together photo 3">
+    </div>
+    
+  </div>
+</div>
+
+<section>
+  <div class="section-label">My heart speaks</div>
+  <div class="love-letter">
+    <span class="salutation">My dearest Betty —</span>
+    <p>
+      A year ago, God placed you in my path, and I understood for the first time what it means to receive a gift you did not deserve but are endlessly grateful for. You are not just the woman I love — you are the woman God designed to walk beside me.
+    </p>
+    <p>
+      Every morning I wake up and see your face, I am reminded that He is still writing beautiful things. You make love feel easy and real. You make life feel fuller. In your warmth, I have found a home I never want to leave.
+    </p>
+    <p>
+      You are flirty and fun, gentle and fierce, full of light that spills onto everyone around you. Betty, you are extraordinary — and I thank God every single day that He chose <em>me</em> to love you.
+    </p>
+    <span class="sign-off">— Yours completely, Franklin 💜</span>
+  </div>
+</section>
+
+<div class="prayer-section">
+  <div class="prayer-inner">
+    <span class="prayer-icon">🙏🏾</span>
+    <div class="prayer-label">A prayer for us</div>
+    <p class="prayer-text">
+      Lord, we thank You for this love — for the year You have sustained it, nurtured it, and made it grow beyond what we could have imagined on our own.<br><br>
+      We ask that You be the center of everything we are to each other. In our laughter, let us glorify You. In our hardest moments, let us cling first to You and then to each other. Guard our hearts, sharpen our patience, and deepen our grace.<br><br>
+      May this love reflect Your love — unconditional, selfless, and enduring. And may You crown what You have started in us with a lifetime of joy, faithfulness, and peace.<br><br>
+      <em>In Jesus' name — Amen.</em>
+    </p>
+    <span class="scripture">— Ruth 1:16 · "Where you go, I will go."</span>
+  </div>
+</div>
+
+<div class="forever-section">
+  <div class="forever-inner">
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">💜</span>
+      <div class="divider-line"></div>
+    </div>
+    <h2 class="forever-title">Betty, I want<br> a forever with you.</h2>
+    <p class="forever-text">
+      Not just the beautiful days — but all of them.<br>
+      The quiet mornings, the difficult seasons,<br>
+      the growing and the becoming together.<br><br>
+      I would choose you in every lifetime,<br>
+      in every version of this world.<br>
+      You are my home, my <em style="color: var(--rose-light);">forever person.</em><br><br>
+      Here's to year one of the rest of our lives. 💜
+    </p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">🌹</span>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-emojis">💜 🌹 ✝️ 🌹 💜</div>
+  <p class="footer-names">Franklin &amp; Betty</p>
+  <p class="footer-text">Happy 1st Anniversary · With all my love · Forever yours</p>
+</footer>
+
+<script>
+  /* Floating Emoji Script */
+  const emojis = ['💜','🌹','💕','✨','🌸','💫','🫶🏾','💞','🌺','💝','✝️'];
+  const bg = document.getElementById('emojiBg');
+
+  function spawnEmoji() {
+    const el = document.createElement('span');
+    el.className = 'floating-emoji';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+    const dur = Math.random() * 12 + 10;
+    const delay = Math.random() * 5;
+    el.style.animationDuration = dur + 's';
+    el.style.animationDelay = delay + 's';
+    bg.appendChild(el);
+    setTimeout(() => el.remove(), (dur + delay) * 1000);
+  }
+
+  for (let i = 0; i < 15; i++) spawnEmoji();
+  setInterval(spawnEmoji, 1200);
+
+  /* Slideshow Logic */
+  let slides = document.querySelectorAll(".slide");
+  let slideIndex = 0;
+
+  function showSlides() {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[slideIndex].classList.add("active");
+    slideIndex = (slideIndex + 1) % slides.length;
+  }
+
+  // Initial call and timing
+  showSlides();
+  setInterval(showSlides, 5000); // Change every 5 seconds
+</script>
+</body>
+</html>
